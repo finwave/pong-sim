@@ -49,6 +49,8 @@ private:
 
 	CTheApp* m_TheApp;
 
+	void Clear(void);
+
 	// PLAY AREA
 
 	inline int GetGameAreaBorderHeight(int windowHeight) { return windowHeight / 30; }

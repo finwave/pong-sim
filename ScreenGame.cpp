@@ -16,6 +16,11 @@ ScreenGame::~ScreenGame(void)
 
 void ScreenGame::OnRelease(void)
 {
+	Clear();
+}
+
+void ScreenGame::Clear(void)
+{
 	// ball objects exist
 	if (!m_ArrayBallObjects.empty())
 	{
@@ -25,17 +30,19 @@ void ScreenGame::OnRelease(void)
 
 void ScreenGame::Initialize()
 {
-	//TODO: USE APP TO GET WINDOW WIDTH AND HEIGHT
-}
-
-void ScreenGame::Create(CTheApp* app)
-{
-	m_TheApp = app;
-	m_ArrayBallObjects.reserve(MAX_BALLS);
+	Clear();
 
 	// Create game objects.
 	CreateBalls();
 	CreatePads();
+}
+
+void ScreenGame::Create(CTheApp* app)
+{
+	//TODO: USE APP TO GET WINDOW WIDTH AND HEIGHT
+
+	m_TheApp = app;
+	m_ArrayBallObjects.reserve(MAX_BALLS);
 }
 
 void ScreenGame::CreateBalls()
