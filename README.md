@@ -6,6 +6,7 @@ Compilation has been tested with:
 - MS Visual Studio 2022 (Windows 10)
 
 Underlying libraries:
+- [zlib](https://www.zlib.net/) 1.3.1
 - [libzip](https://libzip.org/) 1.11.2
 - [OpenCV](https://opencv.org/) 4.10.0
 - [Blend2d](https://blend2d.com/) 0.11.4
