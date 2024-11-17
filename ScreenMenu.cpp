@@ -20,11 +20,12 @@ void ScreenMenu::OnRelease(void)
 
 void ScreenMenu::Initialize()
 {
-	//TODO: USE APP TO GET WINDOW WIDTH AND HEIGHT
 }
 
 void ScreenMenu::Create(CTheApp* app)
 {
+	//TODO: USE APP TO GET WINDOW WIDTH AND HEIGHT
+
 	m_TheApp = app;
 	CreateFonts();
 }
