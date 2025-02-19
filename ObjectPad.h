@@ -8,6 +8,7 @@
 #define __OBJECTPAD_H__
 
 #include <random>
+#include <windows.h>
 
 // Blend2d
 #include <blend2d.h>
@@ -30,13 +31,23 @@ public:
 		Right
 	};
 
+	enum EPlayerMovement
+	{
+		None,
+		Up,
+		Down
+	};
+
 	void Initialize(int windowWidth, int windowHeight, int playAreaBorderHeight,
 		int padWidth, int padHeight, double padCornerRadius, EPadSide padSide);
 
 	void SetNextBallCollisionMargin(void);
 
+	void UpdateKeyboard(void);
 	void Update(float deltaTime, std::vector<ObjectBall>* arrayBallObjects);
 	void Render(BLContext* ctx, int windowWidth, int windowHeight);
+
+	inline void SetPlayerControlled(bool enabled) { m_bPlayerControlled = enabled; }
 
 	inline MyVector GetCurrentPosition(void) { return m_CurrentPos; }
 	inline float GetPadHeight(void) { return m_fPadHeight; }
@@ -59,6 +70,11 @@ private:
 
 	void RenderLeft(BLContext* ctx, int windowWidth, int windowHeight);
 	void RenderRight(BLContext* ctx, int windowWidth, int windowHeight);
+
+	// PLAYER CONTROLS
+
+	EPlayerMovement m_PlayerMovement;
+	bool m_bPlayerControlled;
 
 	// VISUAL DESIGN
 

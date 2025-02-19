@@ -9,6 +9,11 @@
 void ObjectPad::Initialize(int windowWidth, int windowHeight, int playAreaBorderHeight, 
 	int padWidth, int padHeight, double padCornerRadius, EPadSide padSide)
 {
+	// PLAYER CONTROLS
+	
+	m_PlayerMovement = None;
+	m_bPlayerControlled = false;
+
 	// PLAY AREA DIMENSIONS
 
 	m_fScreenWidth = (float)windowWidth;
@@ -49,6 +54,30 @@ void ObjectPad::SetNextBallCollisionMargin(void)
 {
 	m_fBallCollisionMargin = m_DistributionBallCollisionMargin(m_GeneratorBallCollisionMargin);
 	m_TrackedBallIndex = -1;
+}
+
+void ObjectPad::UpdateKeyboard(void)
+{
+	if (!m_bPlayerControlled)
+	{
+		return;
+	}
+
+	m_PlayerMovement = None;
+
+	// 0x01 = single key press
+	// 0x8000 = continuous
+
+	// UP ARROW
+	if (GetAsyncKeyState(VK_UP) & 0x8000)
+	{
+		m_PlayerMovement = Up;
+	}
+	// DOWN ARROW
+	else if (GetAsyncKeyState(VK_DOWN) & 0x8000)
+	{
+		m_PlayerMovement = Down;
+	}
 }
 
 void ObjectPad::Update(float deltaTime, std::vector<ObjectBall>* arrayBallObjects)

@@ -45,6 +45,9 @@ public:
 	void UpdateScreen(float deltaTime);
 	void RenderScreen(std::string windowName);
 
+	void SetSimulationGameMode(void);
+	void SetPlayerGameMode(void);
+
 private:
 
 	CTheApp* m_TheApp;

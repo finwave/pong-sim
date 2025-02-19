@@ -90,6 +90,20 @@ void ScreenGame::CreatePads()
 
 	m_ObjectPadRight.Initialize(windowWidth, windowHeight, playAreaBorderHeight,
 		padWidth, padHeight, padCornerRadius, ObjectPad::Right);
+
+	SetSimulationGameMode();
+}
+
+void ScreenGame::SetSimulationGameMode(void)
+{
+	m_ObjectPadLeft.SetPlayerControlled(false);
+	m_ObjectPadRight.SetPlayerControlled(false);
+}
+
+void ScreenGame::SetPlayerGameMode(void)
+{
+	m_ObjectPadLeft.SetPlayerControlled(true);
+	m_ObjectPadRight.SetPlayerControlled(false);
 }
 
 BOOL ScreenGame::UpdateKeyboard(void)
