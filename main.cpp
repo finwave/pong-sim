@@ -9,7 +9,7 @@
 int main(int argc, char** argv)
 {
 	CTheApp app;
-	app.Create();
+	app.Create(TRUE);
 
 	int retval = app.Run();
 	return retval;
