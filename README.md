@@ -12,6 +12,6 @@ Underlying libraries:
 - [Blend2d](https://blend2d.com/) 0.11.4
 - [miniaudio](https://github.com/mackron/miniaudio) (0.11.21)
 
-More help for libzip build process:
+For more help to build the required libzip library files:
 
 https://github.com/kiyolee/libzip-win-build
