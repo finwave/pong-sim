@@ -18,8 +18,6 @@ IApplication::IApplication(void)
 
 	m_bExitApp = FALSE;
 	m_bActive = FALSE;
-	
-	m_bFullScreen = TRUE;
 
 	// seed the random number generator
 	::srand( ::GetTickCount64() );
@@ -29,8 +27,10 @@ IApplication::~IApplication(void)
 {
 }
 
-void IApplication::Create()
+void IApplication::Create(BOOL isFullScreen)
 {
+	m_bFullScreen = isFullScreen;
+
 	int screenWidth = GetSystemMetrics(SM_CXSCREEN);
 	int screenHeight = GetSystemMetrics(SM_CYSCREEN);
 

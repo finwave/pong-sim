@@ -26,10 +26,9 @@ public:
 	/**
 	 * Create
 	 * initialise application main window with given parameters
-	 * @param iWidth game window resolution width
-	 * @param iHeight game window resolution height
+	 * @param isFullScreen run the app in fullscreen mode
 	 */
-	void Create();
+	void Create(BOOL isFullScreen);
 
 	/**
 	 * Release
