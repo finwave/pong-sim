@@ -71,20 +71,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(SolutionDir)lib\libzip\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib\libzip\x64\Release;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)..\external library projects\libzip-win-build\lib;$(SolutionDir)..\external library projects\libzip-win-build\win32;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)..\external library projects\libzip-win-build\build-VS2022\x64\Release;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)lib\libzip\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib\libzip\x64\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)..\external library projects\libzip-win-build\lib;$(SolutionDir)..\external library projects\libzip-win-build\win32;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)..\external library projects\libzip-win-build\build-VS2022\x64\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)lib\libzip\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib\libzip\x86\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)..\external library projects\libzip-win-build\lib;$(SolutionDir)..\external library projects\libzip-win-build\win32;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)..\external library projects\libzip-win-build\build-VS2022\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(SolutionDir)lib\libzip\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib\libzip\x86\Release;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)..\external library projects\libzip-win-build\lib;$(SolutionDir)..\external library projects\libzip-win-build\win32;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)..\external library projects\libzip-win-build\build-VS2022\Release;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -101,7 +101,7 @@
       <AdditionalDependencies>libzip.lib;$(SolutionDir)..\external libraries\opencv\build\x86\vc17\lib\Debug\opencv_calib3d4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x86\vc17\lib\Debug\opencv_core4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x86\vc17\lib\Debug\opencv_dnn4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x86\vc17\lib\Debug\opencv_features2d4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x86\vc17\lib\Debug\opencv_flann4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x86\vc17\lib\Debug\opencv_gapi4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x86\vc17\lib\Debug\opencv_highgui4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x86\vc17\lib\Debug\opencv_imgcodecs4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x86\vc17\lib\Debug\opencv_imgproc4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x86\vc17\lib\Debug\opencv_java4100.lib;$(SolutionDir)..\external libraries\opencv\build\x86\vc17\lib\Debug\opencv_ml4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x86\vc17\lib\Debug\opencv_objdetect4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x86\vc17\lib\Debug\opencv_photo4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x86\vc17\lib\Debug\opencv_stitching4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x86\vc17\lib\Debug\opencv_ts4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x86\vc17\lib\Debug\opencv_video4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x86\vc17\lib\Debug\opencv_videoio4100d.lib;$(SolutionDir)..\external libraries\blend2d\build\x86\vc17\Debug\blend2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)lib\libzip\x86\Debug\libzip.dll" "$(SolutionDir)$(Configuration)\" /F /Y
+      <Command>xcopy "$(SolutionDir)..\external library projects\libzip-win-build\build-VS2022\Debug\libzip.dll" "$(SolutionDir)$(Configuration)\" /F /Y
 
 xcopy "$(SolutionDir)..\external libraries\opencv\build\x86\vc17\bin\Debug\opencv_core4100d.dll" "$(SolutionDir)Debug\" /F /Y
 xcopy "$(SolutionDir)..\external libraries\opencv\build\x86\vc17\bin\Debug\opencv_highgui4100d.dll" "$(SolutionDir)Debug\" /F /Y
@@ -134,7 +134,7 @@ xcopy "$(SolutionDir)data" "$(SolutionDir)Debug\" /F /Y</Command>
       </ImageHasSafeExceptionHandlers>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)lib\libzip\x86\Release\libzip.dll" "$(SolutionDir)$(Configuration)\" /F /Y
+      <Command>xcopy "$(SolutionDir)..\external library projects\libzip-win-build\build-VS2022\Release\libzip.dll" "$(SolutionDir)$(Configuration)\" /F /Y
 
 xcopy "$(SolutionDir)..\external libraries\opencv\build\x86\vc17\bin\Release\opencv_core4100.dll" "$(SolutionDir)Release\" /F /Y
 xcopy "$(SolutionDir)..\external libraries\opencv\build\x86\vc17\bin\Release\opencv_highgui4100.dll" "$(SolutionDir)Release\" /F /Y
@@ -161,7 +161,7 @@ xcopy "$(SolutionDir)data" "$(SolutionDir)Release\" /F /Y</Command>
       <AdditionalDependencies>libzip.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Debug\opencv_calib3d4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Debug\opencv_core4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Debug\opencv_dnn4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Debug\opencv_features2d4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Debug\opencv_flann4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Debug\opencv_gapi4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Debug\opencv_highgui4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Debug\opencv_imgcodecs4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Debug\opencv_imgproc4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Debug\opencv_java4100.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Debug\opencv_ml4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Debug\opencv_objdetect4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Debug\opencv_photo4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Debug\opencv_stitching4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Debug\opencv_ts4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Debug\opencv_video4100d.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Debug\opencv_videoio4100d.lib;$(SolutionDir)..\external libraries\blend2d\build\x64\vc17\Debug\blend2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)lib\libzip\x64\Debug\libzip.dll" "$(SolutionDir)$(Platform)\$(Configuration)\" /F /Y
+      <Command>xcopy "$(SolutionDir)..\external library projects\libzip-win-build\build-VS2022\x64\Debug\libzip.dll" "$(SolutionDir)x64\$(Configuration)\" /F /Y
 
 xcopy "$(SolutionDir)..\external libraries\opencv\build\x64\vc17\bin\Debug\opencv_core4100d.dll" "$(SolutionDir)$(Platform)\$(Configuration)\" /F /Y
 xcopy "$(SolutionDir)..\external libraries\opencv\build\x64\vc17\bin\Debug\opencv_highgui4100d.dll" "$(SolutionDir)$(Platform)\$(Configuration)\" /F /Y
@@ -192,7 +192,7 @@ xcopy "$(SolutionDir)data" "$(SolutionDir)$(Platform)\$(Configuration)\" /F /Y</
       <AdditionalDependencies>libzip.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Release\opencv_calib3d4100.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Release\opencv_core4100.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Release\opencv_dnn4100.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Release\opencv_features2d4100.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Release\opencv_flann4100.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Release\opencv_gapi4100.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Release\opencv_highgui4100.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Release\opencv_imgcodecs4100.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Release\opencv_imgproc4100.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Release\opencv_java4100.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Release\opencv_ml4100.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Release\opencv_objdetect4100.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Release\opencv_photo4100.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Release\opencv_stitching4100.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Release\opencv_ts4100.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Release\opencv_video4100.lib;$(SolutionDir)..\external libraries\opencv\build\x64\vc17\lib\Release\opencv_videoio4100.lib;$(SolutionDir)..\external libraries\blend2d\build\x64\vc17\Release\blend2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)lib\libzip\x64\Release\libzip.dll" "$(SolutionDir)$(Platform)\$(Configuration)\" /F /Y
+      <Command>xcopy "$(SolutionDir)..\external library projects\libzip-win-build\build-VS2022\x64\Release\libzip.dll" "$(SolutionDir)x64\$(Configuration)\" /F /Y
 
 xcopy "$(SolutionDir)..\external libraries\opencv\build\x64\vc17\bin\Release\opencv_core4100.dll" "$(SolutionDir)$(Platform)\$(Configuration)\" /F /Y
 xcopy "$(SolutionDir)..\external libraries\opencv\build\x64\vc17\bin\Release\opencv_highgui4100.dll" "$(SolutionDir)$(Platform)\$(Configuration)\" /F /Y
