@@ -1,18 +1,23 @@
 /**
- * Resources.cpp header file
+ * ZipManager.cpp source file
  */
 
-#include "Resources.h"
+#include "ZipManager.h"
 
-CResources::CResources(void)
+CZipManager::CZipManager(void)
 {
 }
 
-CResources::~CResources(void)
+CZipManager::~CZipManager(void)
 {
 }
 
-void CResources::Initialize(void)
+void CZipManager::Initialize()
+{
+    m_sApplicationPath = GetWorkingDir();
+}
+
+void CZipManager::UnpackZipFile(const char* zipName)
 {
     struct zip* archive;
     struct zip_file* file;
@@ -22,7 +27,10 @@ void CResources::Initialize(void)
 
     // Step 1: Initialize the zip archive
 
-    if ((archive = zip_open("data", 0, NULL)) == NULL) {
+    const fs::path applicationPath = fs::path(m_sApplicationPath, std::locale(""));
+    fs::current_path(applicationPath);
+
+    if ((archive = zip_open(zipName, 0, NULL)) == NULL) {
         std::cerr << "Failed to open the zip file." << std::endl;
         return;
     }
@@ -32,7 +40,7 @@ void CResources::Initialize(void)
     // Step 2: Create data folders
 
     fs::current_path(fs::temp_directory_path());
-    create_folder("PongSim");
+    CreateFolder("PongSim");
 
     m_sDataPath = fs::temp_directory_path().generic_string();
     m_sDataPath += "PongSim/";
@@ -53,7 +61,7 @@ void CResources::Initialize(void)
                 std::string dir = m_sDataPath + fileInfo.name;
                 const fs::path dirPath = fs::path(dir, std::locale(""));
 
-                create_folder(dirPath);
+                CreateFolder(dirPath);
             }
             else
             {
@@ -61,7 +69,7 @@ void CResources::Initialize(void)
 
                 if (file)
                 {
-                    extract_file(file, fileInfo);
+                    ExtractFile(file, fileInfo);
                     zip_fclose(file);
                 }
             }
@@ -73,12 +81,19 @@ void CResources::Initialize(void)
     zip_close(archive);
 }
 
-void CResources::create_folder(const fs::path dirPath)
+std::string CZipManager::GetWorkingDir()
+{
+    char buf[256];
+    GetCurrentDirectoryA(256, buf);
+    return std::string(buf) + '\\';
+}
+
+void CZipManager::CreateFolder(const fs::path dirPath)
 {
     fs::create_directory(dirPath);
 }
 
-void CResources::extract_file(struct zip_file* file, struct zip_stat fileInfo)
+void CZipManager::ExtractFile(struct zip_file* file, struct zip_stat fileInfo)
 {
     std::string filePath = m_sDataPath + fileInfo.name;
     std::ofstream outfile(filePath, std::ofstream::binary);
@@ -109,7 +124,7 @@ void CResources::extract_file(struct zip_file* file, struct zip_stat fileInfo)
     outfile.close();
 }
 
-void CResources::SetResourceFilePath(const char* childPath)
+void CZipManager::SetResourceFilePath(const char* childPath)
 {
     std::string stringChildPath = childPath;
     m_sFullResourceFilePath = m_sDataPath + stringChildPath;

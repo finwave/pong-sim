@@ -14,7 +14,7 @@
 #include "miniaudio.h"
 
 // Game classes (forward declaration)
-class CResources;
+class CZipManager;
 
 class SoundManager
 {
@@ -23,7 +23,7 @@ public:
 	SoundManager(void);
 	virtual ~SoundManager(void);
 
-	void Initialize(CResources* resources);
+	void Initialize(CZipManager* resources);
 	void Update(float deltaTime);
 
 	// music playback
@@ -42,7 +42,7 @@ public:
 
 private:
 
-	CResources* m_Resources;
+	CZipManager* m_pZipManager;
 
 	// music playback
 

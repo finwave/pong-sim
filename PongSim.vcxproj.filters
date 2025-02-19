@@ -39,7 +39,7 @@
     <ClInclude Include="SoundManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Resources.h">
+    <ClInclude Include="ZipManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -71,7 +71,7 @@
     <ClCompile Include="SoundManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Resources.cpp">
+    <ClCompile Include="ZipManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

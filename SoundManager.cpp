@@ -6,7 +6,7 @@
 
 // Game classes
 #include "SoundManager.h"
-#include "Resources.h"
+#include "ZipManager.h"
 
 void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount)
 {
@@ -37,9 +37,9 @@ SoundManager::~SoundManager(void)
 	}
 }
 
-void SoundManager::Initialize(CResources* resources)
+void SoundManager::Initialize(CZipManager* resources)
 {
-	m_Resources = resources;
+	m_pZipManager = resources;
 	m_bInitialized = FALSE;
 
 	if (!ENABLE_AUDIO)
@@ -65,11 +65,11 @@ void SoundManager::Initialize(CResources* resources)
 		return;
 	}
 
-	m_Resources->SetResourceFilePath("sound/hit_wall.wav");
-	CreateSoundCache(&m_ArraySoundHitWall, m_Resources->GetResourceFilePath());
+	m_pZipManager->SetResourceFilePath("sound/hit_wall.wav");
+	CreateSoundCache(&m_ArraySoundHitWall, m_pZipManager->GetResourceFilePath());
 
-	m_Resources->SetResourceFilePath("sound/hit_pad.wav");
-	CreateSoundCache(&m_ArraySoundHitPad, m_Resources->GetResourceFilePath());
+	m_pZipManager->SetResourceFilePath("sound/hit_pad.wav");
+	CreateSoundCache(&m_ArraySoundHitPad, m_pZipManager->GetResourceFilePath());
 
 	m_bInitialized = TRUE;
 }
@@ -109,14 +109,14 @@ void SoundManager::ClearMusicResources(void)
 
 void SoundManager::PlayMusicMenu(void)
 {
-	m_Resources->SetResourceFilePath("music/menu.mp3");
-	PlayMusic(m_Resources->GetResourceFilePath());
+	m_pZipManager->SetResourceFilePath("music/menu.mp3");
+	PlayMusic(m_pZipManager->GetResourceFilePath());
 }
 
 void SoundManager::PlayMusicGame(void)
 {
-	m_Resources->SetResourceFilePath("music/game.mp3");
-	PlayMusic(m_Resources->GetResourceFilePath());
+	m_pZipManager->SetResourceFilePath("music/game.mp3");
+	PlayMusic(m_pZipManager->GetResourceFilePath());
 }
 
 void SoundManager::PlayMusic(const char* pFilePath)
@@ -298,8 +298,8 @@ void SoundManager::PlaySoundGameStart(void)
 		return;
 	}
 
-	m_Resources->SetResourceFilePath("sound/game_start.wav");
-	ma_engine_play_sound(m_pEngine, m_Resources->GetResourceFilePath(), NULL);
+	m_pZipManager->SetResourceFilePath("sound/game_start.wav");
+	ma_engine_play_sound(m_pEngine, m_pZipManager->GetResourceFilePath(), NULL);
 }
 
 void SoundManager::PlaySoundGameOver(void)
@@ -317,8 +317,8 @@ void SoundManager::PlaySoundToggle(void)
 		return;
 	}
 
-	m_Resources->SetResourceFilePath("sound/button_toggle.wav");
-	ma_engine_play_sound(m_pEngine, m_Resources->GetResourceFilePath(), NULL);
+	m_pZipManager->SetResourceFilePath("sound/button_toggle.wav");
+	ma_engine_play_sound(m_pEngine, m_pZipManager->GetResourceFilePath(), NULL);
 }
 
 void SoundManager::PlaySoundHitWall(void)

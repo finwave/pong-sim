@@ -14,7 +14,7 @@
 #include "SoundManager.h"
 #include "ScreenMenu.h"
 #include "ScreenGame.h"
-#include "Resources.h"
+#include "ZipManager.h"
 
 using namespace std;
 
@@ -69,7 +69,7 @@ public:
 
 	inline EState GetCurrentState() { return this->m_State; }
 	inline SoundManager* GetSoundManager() { return &m_SoundManager; }
-	inline CResources* GetResourceManager() { return &m_Resources; }
+	inline CZipManager* GetResourceManager() { return &m_ZipManager; }
 
 	string IntToString(int iNumber);
 	char* IntToChar(int iNumber);
@@ -90,7 +90,7 @@ private:
 	void SwitchState(EState);
 
 	// resource files manager
-	CResources m_Resources;
+	CZipManager m_ZipManager;
 
 	// music and sSound effect manager
 	SoundManager m_SoundManager;

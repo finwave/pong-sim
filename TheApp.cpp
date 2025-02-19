@@ -107,11 +107,12 @@ void CTheApp::UpdateScene(float deltaTime)
 		}
 		break;
 	case LoadingResources:
-		m_Resources.Initialize();
+		m_ZipManager.Initialize();
+		m_ZipManager.UnpackZipFile("data");
 		SwitchState(LoadingSound);
 		break;
 	case LoadingSound:
-		m_SoundManager.Initialize(&m_Resources);
+		m_SoundManager.Initialize(&m_ZipManager);
 		SwitchState(LoadingGameScreens);
 		break;
 	case LoadingGameScreens:
