@@ -11,3 +11,7 @@ Underlying libraries:
 - [OpenCV](https://opencv.org/) 4.10.0
 - [Blend2d](https://blend2d.com/) 0.11.4
 - [miniaudio](https://github.com/mackron/miniaudio) (0.11.21)
+
+More help for libzip build process:
+
+https://github.com/kiyolee/libzip-win-build
